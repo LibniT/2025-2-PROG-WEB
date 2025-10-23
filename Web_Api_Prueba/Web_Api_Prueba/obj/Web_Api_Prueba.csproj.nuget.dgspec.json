@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\libja\\source\\repos\\Web_Api_Prueba\\Web_Api_Prueba\\Web_Api_Prueba.csproj": {}
+    "C:\\Users\\libja\\OneDrive\\Desktop\\PROYECTO WEB\\Web_Api_Prueba\\Web_Api_Prueba\\Web_Api_Prueba.csproj": {}
   },
   "projects": {
-    "C:\\Users\\libja\\source\\repos\\Web_Api_Prueba\\Web_Api_Prueba\\Web_Api_Prueba.csproj": {
+    "C:\\Users\\libja\\OneDrive\\Desktop\\PROYECTO WEB\\Web_Api_Prueba\\Web_Api_Prueba\\Web_Api_Prueba.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\libja\\source\\repos\\Web_Api_Prueba\\Web_Api_Prueba\\Web_Api_Prueba.csproj",
+        "projectUniqueName": "C:\\Users\\libja\\OneDrive\\Desktop\\PROYECTO WEB\\Web_Api_Prueba\\Web_Api_Prueba\\Web_Api_Prueba.csproj",
         "projectName": "Web_Api_Prueba",
-        "projectPath": "C:\\Users\\libja\\source\\repos\\Web_Api_Prueba\\Web_Api_Prueba\\Web_Api_Prueba.csproj",
+        "projectPath": "C:\\Users\\libja\\OneDrive\\Desktop\\PROYECTO WEB\\Web_Api_Prueba\\Web_Api_Prueba\\Web_Api_Prueba.csproj",
         "packagesPath": "C:\\Users\\libja\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\libja\\source\\repos\\Web_Api_Prueba\\Web_Api_Prueba\\obj\\",
+        "outputPath": "C:\\Users\\libja\\OneDrive\\Desktop\\PROYECTO WEB\\Web_Api_Prueba\\Web_Api_Prueba\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
