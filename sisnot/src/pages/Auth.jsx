@@ -7,7 +7,7 @@ export default function Auth() {
   const [isLogin, setIsLogin] = useState(true)
   const navigate = useNavigate()
 
-  const [loginData, setLoginData] = useState({ email: "", password: "" })
+  const [loginData, setLoginData] = useState({ email: "", password: "", rememberMe: false })
   const [registerData, setRegisterData] = useState({
     nombre: "",
     apellido: "",
@@ -34,8 +34,37 @@ export default function Auth() {
       const usuario = personas.find((p) => p.email === loginData.email && p.password === loginData.password)
 
       if (usuario) {
-        // Guardar usuario en localStorage
-        localStorage.setItem("usuario", JSON.stringify(usuario))
+        const userSession = {
+          ...usuario,
+          rememberMe: loginData.rememberMe,
+          loginTimestamp: new Date().toISOString(),
+        }
+
+        if (loginData.rememberMe) {
+          // Si marcó "Recordarme", guardar en localStorage (persiste al cerrar navegador)
+          localStorage.setItem("usuario", JSON.stringify(userSession))
+        } else {
+          // Si no marcó "Recordarme", guardar en sessionStorage (se borra al cerrar navegador)
+          sessionStorage.setItem("usuario", JSON.stringify(userSession))
+        }
+
+        // Inicializar datos de perfil si no existen
+        const profileKey = `profile_${usuario.email}`
+        if (!localStorage.getItem(profileKey)) {
+          const defaultProfile = {
+            nombre: usuario.nombre || "",
+            apellido: usuario.apellido || "",
+            email: usuario.email,
+            edad: "",
+            fechaNacimiento: "",
+            profesion: "",
+            telefono: "",
+            intereses: "",
+            biografia: "",
+          }
+          localStorage.setItem(profileKey, JSON.stringify(defaultProfile))
+        }
+
         showNotification("¡Inicio de sesión exitoso! Bienvenido de vuelta", "success")
 
         // Redirigir al dashboard después de 1 segundo
@@ -66,8 +95,28 @@ export default function Auth() {
 
       if (response.ok) {
         const nuevoUsuario = await response.json()
-        // Guardar usuario en localStorage
-        localStorage.setItem("usuario", JSON.stringify(nuevoUsuario))
+        const userSession = {
+          ...nuevoUsuario,
+          rememberMe: true,
+          loginTimestamp: new Date().toISOString(),
+        }
+        localStorage.setItem("usuario", JSON.stringify(userSession))
+
+        // Inicializar datos de perfil
+        const profileKey = `profile_${nuevoUsuario.email}`
+        const defaultProfile = {
+          nombre: nuevoUsuario.nombre || "",
+          apellido: nuevoUsuario.apellido || "",
+          email: nuevoUsuario.email,
+          edad: "",
+          fechaNacimiento: "",
+          profesion: "",
+          telefono: "",
+          intereses: "",
+          biografia: "",
+        }
+        localStorage.setItem(profileKey, JSON.stringify(defaultProfile))
+
         showNotification("¡Cuenta creada exitosamente! Bienvenido a SISNOT", "success")
 
         // Redirigir al dashboard después de 1 segundo
@@ -122,7 +171,7 @@ export default function Auth() {
           // Login Form
           <form onSubmit={handleLogin} className="space-y-6">
             <div>
-              <h2 className="text-3xl font-bold text-slate-900 mb-2">¡Bienvenido de nuevo!</h2>
+              <h2 className="text-3xl font-bold text-slate-900 mb-2">¡Bienvenido de vuelta!</h2>
               <p className="text-slate-600">Ingresa a tu cuenta para continuar</p>
             </div>
 
@@ -153,7 +202,12 @@ export default function Auth() {
 
               <div className="flex items-center justify-between text-sm">
                 <label className="flex items-center gap-2 cursor-pointer">
-                  <input type="checkbox" className="w-4 h-4 rounded border-slate-300 text-primary focus:ring-primary" />
+                  <input
+                    type="checkbox"
+                    className="w-4 h-4 rounded border-slate-300 text-primary focus:ring-primary"
+                    checked={loginData.rememberMe}
+                    onChange={(e) => setLoginData({ ...loginData, rememberMe: e.target.checked })}
+                  />
                   <span className="text-slate-600">Recordarme</span>
                 </label>
                 <button type="button" className="text-primary font-medium hover:underline">
