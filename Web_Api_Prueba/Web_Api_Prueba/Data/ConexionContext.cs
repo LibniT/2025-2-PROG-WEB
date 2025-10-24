@@ -14,7 +14,7 @@ namespace Web_Api_Prueba.Data
         }
 
         public DbSet<Persona> Personas { get; set; }
-
+        public DbSet<Meta> Metas { get; set; }
 
     }
 }

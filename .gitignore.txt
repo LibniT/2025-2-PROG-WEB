@@ -1,0 +1,31 @@
+# --- Visual Studio ---
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.dbmdl
+*.dbproj.schemaview
+*.pdb
+*.cache
+*.obj
+*.exe
+*.dll
+*.log
+*.vspscc
+*.vssscc
+[Tt]emp/
+[Bb]in/
+[Oo]bj/
+[Mm]igrations/
+
+# --- Node / React ---
+node_modules/
+dist/
+.env
+.env.local
+.vscode/
+
+# --- Sistema ---
+.DS_Store
+Thumbs.db
