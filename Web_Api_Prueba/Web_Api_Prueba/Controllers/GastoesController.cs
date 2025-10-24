@@ -12,47 +12,47 @@ namespace Web_Api_Prueba.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PersonasController : ControllerBase
+    public class GastoesController : ControllerBase
     {
         private readonly ConexionContext _context;
 
-        public PersonasController(ConexionContext context)
+        public GastoesController(ConexionContext context)
         {
             _context = context;
         }
 
-        // GET: api/Personas
+        // GET: api/Gastoes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Persona>>> GetPersonas()
+        public async Task<ActionResult<IEnumerable<Gasto>>> GetGastos()
         {
-            return await _context.Personas.ToListAsync();
+            return await _context.Gastos.ToListAsync();
         }
 
-        // GET: api/Personas/5
+        // GET: api/Gastoes/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Persona>> GetPersona(int id)
+        public async Task<ActionResult<Gasto>> GetGasto(int id)
         {
-            var persona = await _context.Personas.FindAsync(id);
+            var gasto = await _context.Gastos.FindAsync(id);
 
-            if (persona == null)
+            if (gasto == null)
             {
                 return NotFound();
             }
 
-            return persona;
+            return gasto;
         }
 
-        // PUT: api/Personas/5
+        // PUT: api/Gastoes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPersona(int id, Persona persona)
+        public async Task<IActionResult> PutGasto(int id, Gasto gasto)
         {
-            if (id != persona.IdPersona)
+            if (id != gasto.IdGasto)
             {
                 return BadRequest();
             }
 
-            _context.Entry(persona).State = EntityState.Modified;
+            _context.Entry(gasto).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace Web_Api_Prueba.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PersonaExists(id))
+                if (!GastoExists(id))
                 {
                     return NotFound();
                 }
@@ -73,36 +73,36 @@ namespace Web_Api_Prueba.Controllers
             return NoContent();
         }
 
-        // POST: api/Personas
+        // POST: api/Gastoes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Persona>> PostPersona(Persona persona)
+        public async Task<ActionResult<Gasto>> PostGasto(Gasto gasto)
         {
-            _context.Personas.Add(persona);
+            _context.Gastos.Add(gasto);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetPersona", new { id = persona.IdPersona }, persona);
+            return CreatedAtAction("GetGasto", new { id = gasto.IdGasto }, gasto);
         }
 
-        // DELETE: api/Personas/5
+        // DELETE: api/Gastoes/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePersona(int id)
+        public async Task<IActionResult> DeleteGasto(int id)
         {
-            var persona = await _context.Personas.FindAsync(id);
-            if (persona == null)
+            var gasto = await _context.Gastos.FindAsync(id);
+            if (gasto == null)
             {
                 return NotFound();
             }
 
-            _context.Personas.Remove(persona);
+            _context.Gastos.Remove(gasto);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool PersonaExists(int id)
+        private bool GastoExists(int id)
         {
-            return _context.Personas.Any(personas => personas.IdPersona == id);
+            return _context.Gastos.Any(e => e.IdGasto == id);
         }
     }
 }

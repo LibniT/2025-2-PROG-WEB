@@ -4,6 +4,7 @@ const tabs = [
   { to: "/auth", label: "Registro", icon: "👤" },
   { to: "/dashboard", label: "Dashboard", icon: "📊" },
   { to: "/profile", label: "Perfil", icon: "⚙️" },
+  {to: "/Bills", label: "Gastos", icon: "💰"}
 ]
 
 export default function Topbar() {

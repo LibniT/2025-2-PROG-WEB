@@ -14,6 +14,9 @@ namespace Web_Api_Prueba.Data
         }
 
         public DbSet<Persona> Personas { get; set; }
+        public DbSet<Gasto> Gastos { get; set; }
+        public DbSet<CategoriaGasto> CategoriaGastos { get; set; }
+
 
 
     }

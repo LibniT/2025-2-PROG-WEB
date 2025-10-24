@@ -4,6 +4,7 @@ import Landing from "./pages/Landing"
 import Auth from "./pages/Auth"
 import Profile from "./pages/Profile"
 import Dashboard from "./pages/Dashboard"
+import Gastos from "./pages/Bills"
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
           <Route path="/auth" element={<Auth />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/Bills" element={<Gastos />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </main>

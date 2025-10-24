@@ -1,45 +1,56 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\libja\\source\\repos\\Web_Api_Prueba\\",
+  "WorkspaceRootPath": "C:\\PROYECTO-WEB\\commit2libni\\2025-2-PROG-WEB\\Web_Api_Prueba\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|c:\\users\\libja\\source\\repos\\web_api_prueba\\web_api_prueba\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|solutionrelative:web_api_prueba\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\PROYECTO-WEB\\commit2libni\\2025-2-PROG-WEB\\Web_Api_Prueba\\Web_Api_Prueba\\Migrations\\20251024042833_Initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Web_Api_Prueba\\Migrations\\20251024042833_Initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\libja\\source\\repos\\Web_Api_Prueba\\Web_Api_Prueba\\Migrations\\20251015234051_AddCampoTelefonoAUsuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Web_Api_Prueba\\Migrations\\20251015234051_AddCampoTelefonoAUsuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|c:\\users\\libja\\source\\repos\\web_api_prueba\\web_api_prueba\\models\\persona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|solutionrelative:web_api_prueba\\models\\persona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|c:\\users\\libja\\source\\repos\\web_api_prueba\\web_api_prueba\\data\\conexioncontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|solutionrelative:web_api_prueba\\data\\conexioncontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|c:\\users\\libja\\source\\repos\\web_api_prueba\\web_api_prueba\\migrations\\conexioncontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|solutionrelative:web_api_prueba\\migrations\\conexioncontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|c:\\users\\libja\\source\\repos\\web_api_prueba\\web_api_prueba\\controllers\\personascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|solutionrelative:web_api_prueba\\controllers\\personascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|c:\\users\\libja\\source\\repos\\web_api_prueba\\web_api_prueba\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|c:\\proyecto-web\\commit2libni\\2025-2-prog-web\\web_api_prueba\\web_api_prueba\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|solutionrelative:web_api_prueba\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|c:\\users\\libja\\source\\repos\\web_api_prueba\\web_api_prueba\\migrations\\20251010181154_inicial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|c:\\proyecto-web\\commit2libni\\2025-2-prog-web\\web_api_prueba\\web_api_prueba\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|solutionrelative:web_api_prueba\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|c:\\proyecto-web\\commit2libni\\2025-2-prog-web\\web_api_prueba\\web_api_prueba\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|solutionrelative:web_api_prueba\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|c:\\proyecto-web\\commit2libni\\2025-2-prog-web\\web_api_prueba\\web_api_prueba\\controllers\\personascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|solutionrelative:web_api_prueba\\controllers\\personascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|c:\\proyecto-web\\commit2libni\\2025-2-prog-web\\web_api_prueba\\web_api_prueba\\data\\conexioncontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|solutionrelative:web_api_prueba\\data\\conexioncontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|c:\\proyecto-web\\commit2libni\\2025-2-prog-web\\web_api_prueba\\web_api_prueba\\models\\persona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|solutionrelative:web_api_prueba\\models\\persona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\libja\\source\\repos\\Web_Api_Prueba\\Web_Api_Prueba\\Migrations\\20251015234051_AddCampoTelefonoAUsuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|c:\\proyecto-web\\commit2libni\\2025-2-prog-web\\web_api_prueba\\web_api_prueba\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|solutionrelative:web_api_prueba\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|c:\\proyecto-web\\commit2libni\\2025-2-prog-web\\web_api_prueba\\web_api_prueba\\migrations\\conexioncontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|solutionrelative:web_api_prueba\\migrations\\conexioncontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|c:\\proyecto-web\\commit2libni\\2025-2-prog-web\\web_api_prueba\\web_api_prueba\\migrations\\20251010181154_inicial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|solutionrelative:web_api_prueba\\migrations\\20251010181154_inicial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|c:\\users\\libja\\source\\repos\\web_api_prueba\\web_api_prueba\\migrations\\20251010182452_add_email.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|c:\\proyecto-web\\commit2libni\\2025-2-prog-web\\web_api_prueba\\web_api_prueba\\migrations\\20251010182452_add_email.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|solutionrelative:web_api_prueba\\migrations\\20251010182452_add_email.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|c:\\users\\libja\\source\\repos\\web_api_prueba\\web_api_prueba\\migrations\\20251015234134_addpasswordanddeletedage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|c:\\proyecto-web\\commit2libni\\2025-2-prog-web\\web_api_prueba\\web_api_prueba\\migrations\\20251015234134_addpasswordanddeletedage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4EAF00F9-3CBB-48B1-8FC0-18FE72A1FF3A}|Web_Api_Prueba\\Web_Api_Prueba.csproj|solutionrelative:web_api_prueba\\migrations\\20251015234134_addpasswordanddeletedage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -50,132 +61,186 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "20251024042833_Initial.cs",
+              "DocumentMoniker": "C:\\PROYECTO-WEB\\commit2libni\\2025-2-PROG-WEB\\Web_Api_Prueba\\Web_Api_Prueba\\Migrations\\20251024042833_Initial.cs",
+              "RelativeDocumentMoniker": "Web_Api_Prueba\\Migrations\\20251024042833_Initial.cs",
+              "ToolTip": "C:\\PROYECTO-WEB\\commit2libni\\2025-2-PROG-WEB\\Web_Api_Prueba\\Web_Api_Prueba\\Migrations\\20251024042833_Initial.cs",
+              "RelativeToolTip": "Web_Api_Prueba\\Migrations\\20251024042833_Initial.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-24T04:28:33.776Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\PROYECTO-WEB\\commit2libni\\2025-2-PROG-WEB\\Web_Api_Prueba\\Web_Api_Prueba\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "Web_Api_Prueba\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\PROYECTO-WEB\\commit2libni\\2025-2-PROG-WEB\\Web_Api_Prueba\\Web_Api_Prueba\\Properties\\launchSettings.json",
+              "RelativeToolTip": "Web_Api_Prueba\\Properties\\launchSettings.json",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-24T04:09:55.894Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "C:\\PROYECTO-WEB\\commit2libni\\2025-2-PROG-WEB\\Web_Api_Prueba\\Web_Api_Prueba\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "Web_Api_Prueba\\Controllers\\WeatherForecastController.cs",
+              "ToolTip": "C:\\PROYECTO-WEB\\commit2libni\\2025-2-PROG-WEB\\Web_Api_Prueba\\Web_Api_Prueba\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "Web_Api_Prueba\\Controllers\\WeatherForecastController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-24T04:09:50.737Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "20251015234051_AddCampoTelefonoAUsuario.cs",
               "DocumentMoniker": "C:\\Users\\libja\\source\\repos\\Web_Api_Prueba\\Web_Api_Prueba\\Migrations\\20251015234051_AddCampoTelefonoAUsuario.cs",
-              "RelativeDocumentMoniker": "Web_Api_Prueba\\Migrations\\20251015234051_AddCampoTelefonoAUsuario.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\Users\\libja\\source\\repos\\Web_Api_Prueba\\Web_Api_Prueba\\Migrations\\20251015234051_AddCampoTelefonoAUsuario.cs",
               "ToolTip": "C:\\Users\\libja\\source\\repos\\Web_Api_Prueba\\Web_Api_Prueba\\Migrations\\20251015234051_AddCampoTelefonoAUsuario.cs",
-              "RelativeToolTip": "Web_Api_Prueba\\Migrations\\20251015234051_AddCampoTelefonoAUsuario.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "RelativeToolTip": "..\\..\\..\\..\\Users\\libja\\source\\repos\\Web_Api_Prueba\\Web_Api_Prueba\\Migrations\\20251015234051_AddCampoTelefonoAUsuario.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-15T23:40:51.861Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "ConexionContextModelSnapshot.cs",
-              "DocumentMoniker": "C:\\Users\\libja\\source\\repos\\Web_Api_Prueba\\Web_Api_Prueba\\Migrations\\ConexionContextModelSnapshot.cs",
+              "DocumentMoniker": "C:\\PROYECTO-WEB\\commit2libni\\2025-2-PROG-WEB\\Web_Api_Prueba\\Web_Api_Prueba\\Migrations\\ConexionContextModelSnapshot.cs",
               "RelativeDocumentMoniker": "Web_Api_Prueba\\Migrations\\ConexionContextModelSnapshot.cs",
-              "ToolTip": "C:\\Users\\libja\\source\\repos\\Web_Api_Prueba\\Web_Api_Prueba\\Migrations\\ConexionContextModelSnapshot.cs",
+              "ToolTip": "C:\\PROYECTO-WEB\\commit2libni\\2025-2-PROG-WEB\\Web_Api_Prueba\\Web_Api_Prueba\\Migrations\\ConexionContextModelSnapshot.cs",
               "RelativeToolTip": "Web_Api_Prueba\\Migrations\\ConexionContextModelSnapshot.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAQAAAAAAAAAAEBVwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-11T21:48:28.263Z"
+              "WhenOpened": "2025-10-11T21:48:28.263Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "PersonasController.cs",
-              "DocumentMoniker": "C:\\Users\\libja\\source\\repos\\Web_Api_Prueba\\Web_Api_Prueba\\Controllers\\PersonasController.cs",
+              "DocumentMoniker": "C:\\PROYECTO-WEB\\commit2libni\\2025-2-PROG-WEB\\Web_Api_Prueba\\Web_Api_Prueba\\Controllers\\PersonasController.cs",
               "RelativeDocumentMoniker": "Web_Api_Prueba\\Controllers\\PersonasController.cs",
-              "ToolTip": "C:\\Users\\libja\\source\\repos\\Web_Api_Prueba\\Web_Api_Prueba\\Controllers\\PersonasController.cs",
+              "ToolTip": "C:\\PROYECTO-WEB\\commit2libni\\2025-2-PROG-WEB\\Web_Api_Prueba\\Web_Api_Prueba\\Controllers\\PersonasController.cs",
               "RelativeToolTip": "Web_Api_Prueba\\Controllers\\PersonasController.cs",
               "ViewState": "AgIAAEkAAAAAAAAAAAAkwEAAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-10T18:37:14.434Z"
+              "WhenOpened": "2025-10-10T18:37:14.434Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "20251010182452_Add_Email.cs",
+              "DocumentMoniker": "C:\\PROYECTO-WEB\\commit2libni\\2025-2-PROG-WEB\\Web_Api_Prueba\\Web_Api_Prueba\\Migrations\\20251010182452_Add_Email.cs",
+              "RelativeDocumentMoniker": "Web_Api_Prueba\\Migrations\\20251010182452_Add_Email.cs",
+              "ToolTip": "C:\\PROYECTO-WEB\\commit2libni\\2025-2-PROG-WEB\\Web_Api_Prueba\\Web_Api_Prueba\\Migrations\\20251010182452_Add_Email.cs",
+              "RelativeToolTip": "Web_Api_Prueba\\Migrations\\20251010182452_Add_Email.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-10T18:24:53.132Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "20251010182452_Add_Email.cs",
-              "DocumentMoniker": "C:\\Users\\libja\\source\\repos\\Web_Api_Prueba\\Web_Api_Prueba\\Migrations\\20251010182452_Add_Email.cs",
-              "RelativeDocumentMoniker": "Web_Api_Prueba\\Migrations\\20251010182452_Add_Email.cs",
-              "ToolTip": "C:\\Users\\libja\\source\\repos\\Web_Api_Prueba\\Web_Api_Prueba\\Migrations\\20251010182452_Add_Email.cs",
-              "RelativeToolTip": "Web_Api_Prueba\\Migrations\\20251010182452_Add_Email.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-10T18:24:53.132Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\libja\\source\\repos\\Web_Api_Prueba\\Web_Api_Prueba\\Program.cs",
+              "DocumentMoniker": "C:\\PROYECTO-WEB\\commit2libni\\2025-2-PROG-WEB\\Web_Api_Prueba\\Web_Api_Prueba\\Program.cs",
               "RelativeDocumentMoniker": "Web_Api_Prueba\\Program.cs",
-              "ToolTip": "C:\\Users\\libja\\source\\repos\\Web_Api_Prueba\\Web_Api_Prueba\\Program.cs",
+              "ToolTip": "C:\\PROYECTO-WEB\\commit2libni\\2025-2-PROG-WEB\\Web_Api_Prueba\\Web_Api_Prueba\\Program.cs",
               "RelativeToolTip": "Web_Api_Prueba\\Program.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAAACAAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-10T18:04:34.547Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "20251015234134_AddPasswordAndDeletedAge.cs",
-              "DocumentMoniker": "C:\\Users\\libja\\source\\repos\\Web_Api_Prueba\\Web_Api_Prueba\\Migrations\\20251015234134_AddPasswordAndDeletedAge.cs",
+              "DocumentMoniker": "C:\\PROYECTO-WEB\\commit2libni\\2025-2-PROG-WEB\\Web_Api_Prueba\\Web_Api_Prueba\\Migrations\\20251015234134_AddPasswordAndDeletedAge.cs",
               "RelativeDocumentMoniker": "Web_Api_Prueba\\Migrations\\20251015234134_AddPasswordAndDeletedAge.cs",
-              "ToolTip": "C:\\Users\\libja\\source\\repos\\Web_Api_Prueba\\Web_Api_Prueba\\Migrations\\20251015234134_AddPasswordAndDeletedAge.cs",
+              "ToolTip": "C:\\PROYECTO-WEB\\commit2libni\\2025-2-PROG-WEB\\Web_Api_Prueba\\Web_Api_Prueba\\Migrations\\20251015234134_AddPasswordAndDeletedAge.cs",
               "RelativeToolTip": "Web_Api_Prueba\\Migrations\\20251015234134_AddPasswordAndDeletedAge.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAzwA4AAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwA4AAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-15T23:41:35.033Z"
+              "WhenOpened": "2025-10-15T23:41:35.033Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "ConexionContext.cs",
-              "DocumentMoniker": "C:\\Users\\libja\\source\\repos\\Web_Api_Prueba\\Web_Api_Prueba\\Data\\ConexionContext.cs",
+              "DocumentMoniker": "C:\\PROYECTO-WEB\\commit2libni\\2025-2-PROG-WEB\\Web_Api_Prueba\\Web_Api_Prueba\\Data\\ConexionContext.cs",
               "RelativeDocumentMoniker": "Web_Api_Prueba\\Data\\ConexionContext.cs",
-              "ToolTip": "C:\\Users\\libja\\source\\repos\\Web_Api_Prueba\\Web_Api_Prueba\\Data\\ConexionContext.cs",
+              "ToolTip": "C:\\PROYECTO-WEB\\commit2libni\\2025-2-PROG-WEB\\Web_Api_Prueba\\Web_Api_Prueba\\Data\\ConexionContext.cs",
               "RelativeToolTip": "Web_Api_Prueba\\Data\\ConexionContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-10T17:49:29.445Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Persona.cs",
-              "DocumentMoniker": "C:\\Users\\libja\\source\\repos\\Web_Api_Prueba\\Web_Api_Prueba\\Models\\Persona.cs",
-              "RelativeDocumentMoniker": "Web_Api_Prueba\\Models\\Persona.cs",
-              "ToolTip": "C:\\Users\\libja\\source\\repos\\Web_Api_Prueba\\Web_Api_Prueba\\Models\\Persona.cs",
-              "RelativeToolTip": "Web_Api_Prueba\\Models\\Persona.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-10T17:46:13.468Z"
+              "WhenOpened": "2025-10-10T17:49:29.445Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\libja\\source\\repos\\Web_Api_Prueba\\Web_Api_Prueba\\appsettings.json",
-              "RelativeDocumentMoniker": "Web_Api_Prueba\\appsettings.json",
-              "ToolTip": "C:\\Users\\libja\\source\\repos\\Web_Api_Prueba\\Web_Api_Prueba\\appsettings.json",
-              "RelativeToolTip": "Web_Api_Prueba\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-10T17:56:19.036Z"
+              "Title": "Persona.cs",
+              "DocumentMoniker": "C:\\PROYECTO-WEB\\commit2libni\\2025-2-PROG-WEB\\Web_Api_Prueba\\Web_Api_Prueba\\Models\\Persona.cs",
+              "RelativeDocumentMoniker": "Web_Api_Prueba\\Models\\Persona.cs",
+              "ToolTip": "C:\\PROYECTO-WEB\\commit2libni\\2025-2-PROG-WEB\\Web_Api_Prueba\\Web_Api_Prueba\\Models\\Persona.cs",
+              "RelativeToolTip": "Web_Api_Prueba\\Models\\Persona.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-10T17:46:13.468Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\PROYECTO-WEB\\commit2libni\\2025-2-PROG-WEB\\Web_Api_Prueba\\Web_Api_Prueba\\appsettings.json",
+              "RelativeDocumentMoniker": "Web_Api_Prueba\\appsettings.json",
+              "ToolTip": "C:\\PROYECTO-WEB\\commit2libni\\2025-2-PROG-WEB\\Web_Api_Prueba\\Web_Api_Prueba\\appsettings.json",
+              "RelativeToolTip": "Web_Api_Prueba\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-10T17:56:19.036Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "20251010181154_Inicial.cs",
-              "DocumentMoniker": "C:\\Users\\libja\\source\\repos\\Web_Api_Prueba\\Web_Api_Prueba\\Migrations\\20251010181154_Inicial.cs",
+              "DocumentMoniker": "C:\\PROYECTO-WEB\\commit2libni\\2025-2-PROG-WEB\\Web_Api_Prueba\\Web_Api_Prueba\\Migrations\\20251010181154_Inicial.cs",
               "RelativeDocumentMoniker": "Web_Api_Prueba\\Migrations\\20251010181154_Inicial.cs",
-              "ToolTip": "C:\\Users\\libja\\source\\repos\\Web_Api_Prueba\\Web_Api_Prueba\\Migrations\\20251010181154_Inicial.cs",
+              "ToolTip": "C:\\PROYECTO-WEB\\commit2libni\\2025-2-PROG-WEB\\Web_Api_Prueba\\Web_Api_Prueba\\Migrations\\20251010181154_Inicial.cs",
               "RelativeToolTip": "Web_Api_Prueba\\Migrations\\20251010181154_Inicial.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-10T18:11:55.785Z"
+              "WhenOpened": "2025-10-10T18:11:55.785Z",
+              "EditorCaption": ""
             }
           ]
         }

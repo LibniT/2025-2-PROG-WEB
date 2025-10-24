@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Web_Api_Prueba.Data;
 
@@ -11,9 +12,11 @@ using Web_Api_Prueba.Data;
 namespace Web_Api_Prueba.Migrations
 {
     [DbContext(typeof(ConexionContext))]
-    partial class ConexionContextModelSnapshot : ModelSnapshot
+    [Migration("20251024051518_add_gasto_and_categoria")]
+    partial class add_gasto_and_categoria
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,8 +64,8 @@ namespace Web_Api_Prueba.Migrations
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("IdCategoriaGasto")
-                        .HasColumnType("int");
+                    b.Property<string>("IdCategoriaGasto")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("IdUsuario")
                         .HasColumnType("nvarchar(max)");
