@@ -10,17 +10,18 @@ export default function Gastos() {
   const [nuevoGasto, setNuevoGasto] = useState({
     descripcion: "",
     monto: "",
+    idCategoriaGasto: "", // <-- ahora mantenemos el id aquí
     categoria: null,
   })
   const [modoCrearCategoria, setModoCrearCategoria] = useState(false)
   const [notificacion, setNotificacion] = useState(null)
+  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState(null)
 
   const mostrarNotificacion = (mensaje, tipo = "success") => {
     setNotificacion({ mensaje, tipo })
     setTimeout(() => setNotificacion(null), 3000)
   }
 
-  // 📌 Cargar gastos y categorías al iniciar
   useEffect(() => {
     cargarGastos()
     cargarCategorias()
@@ -30,7 +31,12 @@ export default function Gastos() {
     try {
       const res = await fetch("https://localhost:7169/api/Gastoes")
       const data = await res.json()
-      setGastos(data)
+      // si backend no trae objeto categoria, lo resolvemos localmente
+      const gastosConCategoria = data.map(g => ({
+        ...g,
+        categoria: g.categoria ?? categorias.find(c => c.idCategoriaGasto === g.idCategoriaGasto) ?? null
+      }))
+      setGastos(gastosConCategoria)
     } catch (error) {
       console.error("Error al cargar gastos:", error)
     }
@@ -46,34 +52,51 @@ export default function Gastos() {
     }
   }
 
-  // 📌 Guardar gasto
-const crearGasto = async () => {
-  try {
-    const gasto = {
-      descripcion: nuevoGasto.descripcion,
-      monto: parseFloat(nuevoGasto.monto),
-      fecha: new Date().toISOString(),
-      idUsuario: "U001", // o el usuario actual
-      idCategoriaGasto: nuevoGasto.categoria
-        ? parseInt(nuevoGasto.categoria.idCategoriaGasto)
-        : null, 
-    };
+  // Guardar gasto (ahora previene el submit y usa idCategoriaGasto)
+  const crearGasto = async (e) => {
+    e.preventDefault()
 
-    const response = await fetch("https://localhost:7169/api/Gastoes", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(gasto),
-    });
+    try {
+      // validaciones básicas
+      if (!nuevoGasto.descripcion || !nuevoGasto.monto) {
+        mostrarNotificacion("Completa descripción y monto", "error")
+        return
+      }
 
-    if (!response.ok) throw new Error(`Error al crear gasto: ${response.status}`);
+      const gastoPayload = {
+        descripcion: nuevoGasto.descripcion,
+        monto: parseFloat(nuevoGasto.monto),
+        fecha: new Date().toISOString(),
+        idUsuario: "U001", // ajusta según tu auth
+        idCategoriaGasto: nuevoGasto.idCategoriaGasto ? parseInt(nuevoGasto.idCategoriaGasto, 10) : null,
+      }
 
-    console.log("✅ Gasto creado correctamente");
-  } catch (error) {
-    console.error("Error creando gasto:", error);
+      const response = await fetch("https://localhost:7169/api/Gastoes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(gastoPayload),
+      })
+
+      if (!response.ok) throw new Error(`Error al crear gasto: ${response.status}`)
+
+      // opcional: el backend devuelve el gasto creado
+      const gastoCreado = await response.json().catch(() => null)
+
+      mostrarNotificacion("Gasto creado correctamente")
+      // refrescamos la lista desde el servidor
+      await cargarGastos()
+      setMostrarModal(false)
+
+      // reset del formulario local
+      setNuevoGasto({ descripcion: "", monto: "", idCategoriaGasto: "", categoria: null })
+      setCategoriaSeleccionada(null)
+    } catch (error) {
+      console.error("Error creando gasto:", error)
+      mostrarNotificacion("Error creando gasto", "error")
+    }
   }
-};
 
-  // 📌 Crear nueva categoría
+  // Crear nueva categoría (igual que antes)
   const crearCategoria = async (e) => {
     e.preventDefault()
     try {
@@ -86,8 +109,9 @@ const crearGasto = async () => {
       if (res.ok) {
         const categoriaCreada = await res.json()
         mostrarNotificacion("Categoría creada exitosamente")
-        setCategorias([...categorias, categoriaCreada])
-        setNuevoGasto({ ...nuevoGasto, categoria: categoriaCreada })
+        setCategorias(prev => [...prev, categoriaCreada])
+        // automáticamente seleccionar la categoría creada para el nuevo gasto
+        setNuevoGasto(prev => ({ ...prev, idCategoriaGasto: categoriaCreada.idCategoriaGasto, categoria: categoriaCreada }))
         setModoCrearCategoria(false)
         setNuevaCategoria({ nombre: "" })
       } else {
@@ -98,7 +122,6 @@ const crearGasto = async () => {
     }
   }
 
-  // 📌 Eliminar gasto
   const eliminarGasto = async (id) => {
     if (!confirm("¿Seguro que deseas eliminar este gasto?")) return
 
@@ -134,7 +157,6 @@ const crearGasto = async () => {
         </button>
       </div>
 
-      {/* 📋 Lista de gastos */}
       <div className="space-y-4">
         {gastos.map((gasto) => (
           <div key={gasto.idGasto} className="p-4 bg-white rounded-xl shadow flex justify-between">
@@ -151,7 +173,6 @@ const crearGasto = async () => {
         ))}
       </div>
 
-      {/* 🪟 Modal para añadir gasto */}
       {mostrarModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40">
           <div className="bg-white p-6 rounded-xl shadow-lg w-full max-w-md">
@@ -183,25 +204,29 @@ const crearGasto = async () => {
                 <div>
                   <label className="label">Categoría</label>
                   <select
-                  className="input"
-                  value={nuevoGasto.idCategoriaGasto || ""}
-                  onChange={(e) => {
-                    const idSeleccionado = parseInt(e.target.value); // 👈 convierte a número
-                    const seleccionada = categorias.find(c => c.idCategoriaGasto === idSeleccionado);
-                    setNuevoGasto({
-                      ...nuevoGasto,
-                      idCategoriaGasto: idSeleccionado, // 👈 asegúrate de incluirlo en el gasto
-                      categoria: seleccionada || { idCategoriaGasto: 0, nombre: "Sin categoría" }
-                    });
-                  }}
-                >
-                  <option value="">Selecciona una categoría</option>
-                  {categorias.map((categoria) => (
-                    <option key={categoria.idCategoriaGasto} value={categoria.idCategoriaGasto}>
-                      {categoria.nombre}
-                    </option>
-                  ))}
-                </select>
+                    className="input"
+                    value={nuevoGasto.idCategoriaGasto || ""}
+                    onChange={(e) => {
+                      const valor = e.target.value
+                      if (!valor) {
+                        setCategoriaSeleccionada(null)
+                        setNuevoGasto({ ...nuevoGasto, idCategoriaGasto: "", categoria: null })
+                        return
+                      }
+                      const idSeleccionado = parseInt(valor, 10)
+                      const seleccionada = categorias.find(c => c.idCategoriaGasto === idSeleccionado) || null
+                      setCategoriaSeleccionada(seleccionada)
+                      setNuevoGasto({ ...nuevoGasto, idCategoriaGasto: idSeleccionado, categoria: seleccionada })
+                    }}
+                  >
+                    <option value="">Selecciona una categoría</option>
+                    {categorias.map((categoria) => (
+                      <option key={categoria.idCategoriaGasto} value={categoria.idCategoriaGasto}>
+                        {categoria.nombre}
+                      </option>
+                    ))}
+                  </select>
+
                   <button
                     type="button"
                     onClick={() => setModoCrearCategoria(true)}
@@ -212,7 +237,7 @@ const crearGasto = async () => {
                 </div>
 
                 <div className="flex justify-end gap-3">
-                  <button type="button" onClick={() => setMostrarModal(false)} className="btn bg-gray-300 text-black">
+                  <button type="button" onClick={() => { setMostrarModal(false); setModoCrearCategoria(false) }} className="btn bg-gray-300 text-black">
                     Cancelar
                   </button>
                   <button type="submit" className="btn">

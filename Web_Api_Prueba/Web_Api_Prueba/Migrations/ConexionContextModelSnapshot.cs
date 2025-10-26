@@ -40,7 +40,7 @@ namespace Web_Api_Prueba.Migrations
 
                     b.HasKey("IdCategoriaGasto");
 
-                    b.ToTable("CategoriaGastos");
+                    b.ToTable("CategoriaGastos", (string)null);
                 });
 
             modelBuilder.Entity("Web_Api_Prueba.Models.Gasto", b =>
@@ -79,7 +79,7 @@ namespace Web_Api_Prueba.Migrations
 
                     b.HasIndex("UsuarioIdPersona");
 
-                    b.ToTable("Gastos");
+                    b.ToTable("Gastos", (string)null);
                 });
 
             modelBuilder.Entity("Web_Api_Prueba.Models.Persona", b =>
@@ -114,7 +114,7 @@ namespace Web_Api_Prueba.Migrations
 
                     b.HasKey("IdPersona");
 
-                    b.ToTable("Personas");
+                    b.ToTable("Personas", (string)null);
                 });
 
             modelBuilder.Entity("Web_Api_Prueba.Models.Gasto", b =>
