@@ -2,10 +2,12 @@
 
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { useAuth } from "../context/AuthContext"
 
 export default function Auth() {
   const [isLogin, setIsLogin] = useState(true)
   const navigate = useNavigate()
+  const { login } = useAuth()
 
   const [loginData, setLoginData] = useState({ email: "", password: "" })
   const [registerData, setRegisterData] = useState({
@@ -27,18 +29,14 @@ export default function Auth() {
     setLoading(true)
 
     try {
-      const response = await fetch("https://localhost:7169/api/Personas")
+      const response = await fetch(`${import.meta.env.VITE_API_URI}/Personas`)
       const personas = await response.json()
 
-      // Buscar usuario con email y password coincidentes
       const usuario = personas.find((p) => p.email === loginData.email && p.password === loginData.password)
 
       if (usuario) {
-        // Guardar usuario en localStorage
-        localStorage.setItem("usuario", JSON.stringify(usuario))
+        login(usuario)
         showNotification("¡Inicio de sesión exitoso! Bienvenido de vuelta", "success")
-
-        // Redirigir al dashboard después de 1 segundo
         setTimeout(() => navigate("/dashboard"), 1000)
       } else {
         showNotification("Credenciales incorrectas. Verifica tu email y contraseña", "error")
@@ -56,7 +54,7 @@ export default function Auth() {
     setLoading(true)
 
     try {
-      const response = await fetch("https://localhost:7169/api/Personas", {
+      const response = await fetch(`${import.meta.env.VITE_API_URI}/Personas`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -66,11 +64,8 @@ export default function Auth() {
 
       if (response.ok) {
         const nuevoUsuario = await response.json()
-        // Guardar usuario en localStorage
-        localStorage.setItem("usuario", JSON.stringify(nuevoUsuario))
+        login(nuevoUsuario)
         showNotification("¡Cuenta creada exitosamente! Bienvenido a SISNOT", "success")
-
-        // Redirigir al dashboard después de 1 segundo
         setTimeout(() => navigate("/dashboard"), 1000)
       } else {
         showNotification("Error al crear la cuenta. Intenta nuevamente", "error")
@@ -119,7 +114,6 @@ export default function Auth() {
         </div>
 
         {isLogin ? (
-          // Login Form
           <form onSubmit={handleLogin} className="space-y-6">
             <div>
               <h2 className="text-3xl font-bold text-slate-900 mb-2">¡Bienvenido de nuevo!</h2>
@@ -178,7 +172,6 @@ export default function Auth() {
             </div>
           </form>
         ) : (
-          // Register Form
           <form onSubmit={handleRegister} className="space-y-6">
             <div>
               <h2 className="text-3xl font-bold text-slate-900 mb-2">Crear Cuenta</h2>
