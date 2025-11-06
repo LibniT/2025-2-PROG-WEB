@@ -1,6 +1,8 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { useAuth } from "../context/AuthContext"
+import { Link } from "react-router-dom"
 
 export default function Gastos() {
   const [gastos, setGastos] = useState([])
@@ -15,33 +17,28 @@ export default function Gastos() {
   const [modoCrearCategoria, setModoCrearCategoria] = useState(false)
   const [notificacion, setNotificacion] = useState(null)
 
+  const { usuario } = useAuth()
+
   const mostrarNotificacion = (mensaje, tipo = "success") => {
     setNotificacion({ mensaje, tipo })
     setTimeout(() => setNotificacion(null), 3000)
   }
 
+  // 📌 Cargar gastos y categorías al iniciar
   useEffect(() => {
-    cargarCategorias()
-  }, [])
-
-  // Cargar gastos después de tener las categorías para mapearlas correctamente
-  useEffect(() => {
-    if (categorias.length > 0) {
+    if (usuario) {
       cargarGastos()
+      cargarCategorias()
     }
-  }, [categorias])
+  }, [usuario])
 
   const cargarGastos = async () => {
     try {
       const res = await fetch(`${import.meta.env.VITE_API_URI}/Gasto`)
       const data = await res.json()
 
-      // Mapear manualmente las categorías usando el id correcto del backend
-      const gastosConCategoria = data.map((g) => ({
-        ...g,
-        categoria: g.idCategoriaGasto ? categorias.find((c) => c.id === g.idCategoriaGasto) : null,
-      }))
-      setGastos(gastosConCategoria)
+      const gastosDelUsuario = data.filter((g) => g.idPersona === usuario.id)
+      setGastos(gastosDelUsuario)
     } catch (error) {
       console.error("Error al cargar gastos:", error)
       mostrarNotificacion("Error al cargar gastos", "error")
@@ -59,74 +56,90 @@ export default function Gastos() {
     }
   }
 
+  // 📌 Guardar gasto
   const crearGasto = async (e) => {
     e.preventDefault()
 
+    console.log("[v0] Creando gasto con datos:", nuevoGasto)
+
     try {
-      if (!nuevoGasto.descripcion || !nuevoGasto.monto) {
-        mostrarNotificacion("Completa descripción y monto", "error")
+      if (!usuario || !usuario.id) {
+        mostrarNotificacion("Error: No hay usuario logueado", "error")
         return
       }
 
       const ahora = new Date()
-      const fechaLocal = new Date(ahora.getTime() - ahora.getTimezoneOffset() * 60000).toISOString()
+      const fechaLocal = new Date(ahora.getTime() - ahora.getTimezoneOffset() * 60000).toISOString().slice(0, -1) // Remover la 'Z' para que C# la interprete como hora local
 
-      const gastoPayload = {
-        descripcion: nuevoGasto.descripcion,
-        monto: Number.parseFloat(nuevoGasto.monto),
-        fecha: fechaLocal,
-        idUsuario: "U001",
-        ...(nuevoGasto.idCategoriaGasto && { idCategoriaGasto: nuevoGasto.idCategoriaGasto }),
+      const gasto = {
+        Descripcion: nuevoGasto.descripcion,
+        Monto: Number.parseFloat(nuevoGasto.monto),
+        Fecha: fechaLocal,
+        IdPersona: usuario.id,
+        IdCategoriaGasto: nuevoGasto.idCategoriaGasto || null,
       }
+
+      console.log("[v0] Enviando gasto a la API:", gasto)
 
       const response = await fetch(`${import.meta.env.VITE_API_URI}/Gasto`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(gastoPayload),
+        body: JSON.stringify(gasto),
       })
 
-      if (!response.ok) throw new Error(`Error al crear gasto: ${response.status}`)
+      if (!response.ok) {
+        const errorText = await response.text()
+        console.error("[v0] Error del servidor:", errorText)
+        throw new Error(`Error al crear gasto: ${response.status}`)
+      }
 
-      mostrarNotificacion("Gasto creado correctamente")
-      await cargarGastos()
+      const gastoCreado = await response.json()
+      console.log("[v0] Gasto creado correctamente:", gastoCreado)
+
+      mostrarNotificacion("Gasto creado exitosamente")
       setMostrarModal(false)
       setNuevoGasto({ descripcion: "", monto: "", idCategoriaGasto: null })
+      cargarGastos()
     } catch (error) {
-      console.error("Error creando gasto:", error)
-      mostrarNotificacion("Error creando gasto", "error")
+      console.error("[v0] Error creando gasto:", error)
+      mostrarNotificacion("Error al crear el gasto", "error")
     }
   }
 
+  // 📌 Crear nueva categoría
   const crearCategoria = async (e) => {
     e.preventDefault()
+
+    console.log("[v0] Creando categoría:", nuevaCategoria)
+
     try {
       const res = await fetch(`${import.meta.env.VITE_API_URI}/CategoriaGasto`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(nuevaCategoria),
+        body: JSON.stringify({ Nombre: nuevaCategoria.nombre }),
       })
 
       if (res.ok) {
         const categoriaCreada = await res.json()
+        console.log("[v0] Categoría creada:", categoriaCreada)
         mostrarNotificacion("Categoría creada exitosamente")
 
-        // Actualizar lista de categorías y seleccionar la nueva usando el id correcto
-        setCategorias((prev) => [...prev, categoriaCreada])
-        setNuevoGasto((prev) => ({
-          ...prev,
-          idCategoriaGasto: categoriaCreada.id,
-        }))
+        setCategorias([...categorias, categoriaCreada])
+        setNuevoGasto({ ...nuevoGasto, idCategoriaGasto: categoriaCreada.id })
         setModoCrearCategoria(false)
         setNuevaCategoria({ nombre: "" })
       } else {
+        const errorText = await res.text()
+        console.error("[v0] Error al crear categoría:", errorText)
         mostrarNotificacion("Error al crear la categoría", "error")
       }
     } catch (error) {
-      console.error("Error al crear categoría:", error)
-      mostrarNotificacion("Error al crear categoría", "error")
+      console.error("[v0] Error al crear categoría:", error)
+      mostrarNotificacion("Error de conexión al crear categoría", "error")
     }
   }
 
+  // 📌 Eliminar gasto
   const eliminarGasto = async (id) => {
     if (!confirm("¿Seguro que deseas eliminar este gasto?")) return
 
@@ -142,6 +155,21 @@ export default function Gastos() {
       console.error("Error al eliminar gasto:", error)
       mostrarNotificacion("Error al eliminar gasto", "error")
     }
+  }
+
+  if (!usuario) {
+    return (
+      <div className="max-w-3xl mx-auto">
+        <div className="card">
+          <div className="text-center space-y-4">
+            <p className="text-slate-600 text-lg">Debes iniciar sesión para ver tus gastos</p>
+            <Link to="/auth" className="btn inline-block">
+              Iniciar Sesión
+            </Link>
+          </div>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -163,25 +191,33 @@ export default function Gastos() {
         </button>
       </div>
 
+      {/* 📋 Lista de gastos */}
       <div className="space-y-4">
-        {/* Usar id en lugar de idGasto para coincidir con el backend */}
-        {gastos.map((gasto) => (
-          <div key={gasto.id} className="p-4 bg-white rounded-xl shadow flex justify-between">
-            <div>
-              <p className="font-semibold">{gasto.descripcion}</p>
-              <p className="text-sm text-gray-600">
-                {gasto.categoria?.nombre || "Sin categoría"} — ${gasto.monto}
-              </p>
-            </div>
-            <button onClick={() => eliminarGasto(gasto.id)} className="text-red-500 hover:underline">
-              Eliminar
-            </button>
+        {gastos.length === 0 ? (
+          <div className="text-center py-12 text-slate-500">
+            <p className="text-lg">No hay gastos registrados</p>
+            <p className="text-sm">Comienza agregando tu primer gasto</p>
           </div>
-        ))}
+        ) : (
+          gastos.map((gasto) => (
+            <div key={gasto.id} className="p-4 bg-white rounded-xl shadow flex justify-between">
+              <div>
+                <p className="font-semibold">{gasto.descripcion}</p>
+                <p className="text-sm text-gray-600">
+                  {categorias.find((c) => c.id === gasto.idCategoriaGasto)?.nombre || "Sin categoría"} — ${gasto.monto}
+                </p>
+              </div>
+              <button onClick={() => eliminarGasto(gasto.id)} className="text-red-500 hover:underline">
+                Eliminar
+              </button>
+            </div>
+          ))
+        )}
       </div>
 
+      {/* 🪟 Modal para añadir gasto */}
       {mostrarModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50">
           <div className="bg-white p-6 rounded-xl shadow-lg w-full max-w-md">
             <h2 className="text-2xl font-bold mb-4">Añadir Gasto</h2>
 
@@ -210,27 +246,23 @@ export default function Gastos() {
                 </div>
 
                 <div>
-                  <label className="label">Categoría (opcional)</label>
-                  {/* Usar id en lugar de idCategoriaGasto y manejar correctamente el valor null */}
+                  <label className="label">Categoría</label>
                   <select
                     className="input"
                     value={nuevoGasto.idCategoriaGasto || ""}
                     onChange={(e) => {
-                      const valor = e.target.value
-                      setNuevoGasto({
-                        ...nuevoGasto,
-                        idCategoriaGasto: valor ? Number.parseInt(valor, 10) : null,
-                      })
+                      const idSeleccionado = e.target.value ? Number.parseInt(e.target.value) : null
+                      console.log("[v0] Categoría seleccionada:", idSeleccionado)
+                      setNuevoGasto({ ...nuevoGasto, idCategoriaGasto: idSeleccionado })
                     }}
                   >
-                    <option value="">Sin categoría</option>
+                    <option value="">Selecciona una categoría</option>
                     {categorias.map((categoria) => (
                       <option key={categoria.id} value={categoria.id}>
                         {categoria.nombre}
                       </option>
                     ))}
                   </select>
-
                   <button
                     type="button"
                     onClick={() => setModoCrearCategoria(true)}
@@ -245,7 +277,6 @@ export default function Gastos() {
                     type="button"
                     onClick={() => {
                       setMostrarModal(false)
-                      setModoCrearCategoria(false)
                       setNuevoGasto({ descripcion: "", monto: "", idCategoriaGasto: null })
                     }}
                     className="btn bg-gray-300 text-black"
@@ -271,10 +302,7 @@ export default function Gastos() {
                 <div className="flex justify-end gap-3">
                   <button
                     type="button"
-                    onClick={() => {
-                      setModoCrearCategoria(false)
-                      setNuevaCategoria({ nombre: "" })
-                    }}
+                    onClick={() => setModoCrearCategoria(false)}
                     className="btn bg-gray-300 text-black"
                   >
                     Volver

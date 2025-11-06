@@ -120,7 +120,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -133,6 +133,10 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             },
             {
               "$type": "Document",
@@ -151,7 +155,7 @@
               "RelativeDocumentMoniker": "Web_Api_Prueba\\Program.cs",
               "ToolTip": "C:\\Users\\libja\\OneDrive\\Desktop\\2025-2-PROG-WEB2\\2025-2-PROG-WEB\\Web_Api_Prueba\\Web_Api_Prueba\\Program.cs",
               "RelativeToolTip": "Web_Api_Prueba\\Program.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAArAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-10T18:04:34.547Z",
               "EditorCaption": ""
@@ -465,10 +469,6 @@
               "RelativeToolTip": "..\\..\\..\\..\\..\\source\\repos\\Web_Api_Prueba\\Web_Api_Prueba\\Migrations\\20251015234051_AddCampoTelefonoAUsuario.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-15T23:40:51.861Z"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             }
           ]
         }

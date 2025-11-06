@@ -9,12 +9,12 @@ export default function Auth() {
   const navigate = useNavigate()
   const { login } = useAuth()
 
-  const [loginData, setLoginData] = useState({ email: "", password: "" })
+  const [loginData, setLoginData] = useState({ Email: "", Password: "" })
   const [registerData, setRegisterData] = useState({
-    nombre: "",
-    apellido: "",
-    email: "",
-    password: "",
+    Nombre: "",
+    Apellido: "",
+    Email: "",
+    Password: "",
   })
   const [loading, setLoading] = useState(false)
   const [notification, setNotification] = useState(null)
@@ -28,22 +28,66 @@ export default function Auth() {
     e.preventDefault()
     setLoading(true)
 
-    try {
-      const response = await fetch(`${import.meta.env.VITE_API_URI}/Personas`)
-      const personas = await response.json()
+    if (!loginData.Email || !loginData.Password) {
+      showNotification("Por favor completa todos los campos", "error")
+      setLoading(false)
+      return
+    }
 
-      const usuario = personas.find((p) => p.email === loginData.email && p.password === loginData.password)
+    const emailLimpio = loginData.Email.trim()
+    const passwordLimpio = loginData.Password.trim()
+
+    if (!emailLimpio || !passwordLimpio) {
+      showNotification("Por favor completa todos los campos", "error")
+      setLoading(false)
+      return
+    }
+
+    console.log("[v0] Intentando login con:", { Email: emailLimpio })
+
+    try {
+      console.log("[v0] Haciendo fetch a la API...")
+      const response = await fetch("https://localhost:7169/api/Personas")
+
+      if (!response.ok) {
+        throw new Error(`Error HTTP: ${response.status}`)
+      }
+
+      const personas = await response.json()
+      console.log("[v0] Personas recibidas:", personas.length)
+      console.log("[v0] Primera persona (ejemplo):", personas[0])
+
+      const usuario = personas.find(
+        (p) => p.email?.toLowerCase() === emailLimpio.toLowerCase() && p.password === passwordLimpio,
+      )
 
       if (usuario) {
+        console.log("[v0] Usuario encontrado:", usuario)
+        console.log("[v0] ID del usuario:", usuario.id)
         login(usuario)
         showNotification("¡Inicio de sesión exitoso! Bienvenido de vuelta", "success")
+
         setTimeout(() => navigate("/dashboard"), 1000)
       } else {
+        console.log("[v0] Credenciales incorrectas")
+        console.log(
+          "[v0] Emails en la base de datos:",
+          personas.map((p) => p.email),
+        )
         showNotification("Credenciales incorrectas. Verifica tu email y contraseña", "error")
       }
     } catch (error) {
-      console.error("Error al iniciar sesión:", error)
-      showNotification("Error al conectar con el servidor", "error")
+      console.error("[v0] Error al iniciar sesión:", error)
+      console.error("[v0] Detalles del error:", error.message)
+
+      if (error.message.includes("Failed to fetch") || error.message.includes("NetworkError")) {
+        showNotification(
+          "Error de conexión. Verifica que el servidor esté corriendo y que CORS esté configurado",
+          "error",
+        )
+      } else {
+        showNotification(`Error al conectar con el servidor: ${error.message}`, "error")
+      }
     } finally {
       setLoading(false)
     }
@@ -53,26 +97,53 @@ export default function Auth() {
     e.preventDefault()
     setLoading(true)
 
+    const nuevoUsuario = {
+      Nombre: registerData.Nombre.trim(),
+      Apellido: registerData.Apellido.trim(),
+      Email: registerData.Email.trim(),
+      Password: registerData.Password.trim(),
+      FechaRegistro: new Date().toISOString(),
+    }
+
+    console.log("[v0] Intentando registrar usuario:", { Email: nuevoUsuario.Email, Nombre: nuevoUsuario.Nombre })
+    console.log("[v0] Datos a enviar:", nuevoUsuario)
+
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URI}/Personas`, {
+      const response = await fetch("https://localhost:7169/api/Personas", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(registerData),
+        body: JSON.stringify(nuevoUsuario),
       })
 
+      console.log("[v0] Respuesta del servidor:", response.status)
+
       if (response.ok) {
-        const nuevoUsuario = await response.json()
-        login(nuevoUsuario)
+        const usuarioCreado = await response.json()
+        console.log("[v0] Usuario creado exitosamente:", usuarioCreado)
+        console.log("[v0] ID del usuario creado:", usuarioCreado.id)
+        login(usuarioCreado)
         showNotification("¡Cuenta creada exitosamente! Bienvenido a SISNOT", "success")
+
         setTimeout(() => navigate("/dashboard"), 1000)
       } else {
-        showNotification("Error al crear la cuenta. Intenta nuevamente", "error")
+        const errorText = await response.text()
+        console.error("[v0] Error del servidor:", errorText)
+        showNotification(`Error al crear la cuenta: ${response.status}`, "error")
       }
     } catch (error) {
-      console.error("Error al registrar:", error)
-      showNotification("Error al conectar con el servidor", "error")
+      console.error("[v0] Error al registrar:", error)
+      console.error("[v0] Detalles del error:", error.message)
+
+      if (error.message.includes("Failed to fetch") || error.message.includes("NetworkError")) {
+        showNotification(
+          "Error de conexión. Verifica que el servidor esté corriendo y que CORS esté configurado",
+          "error",
+        )
+      } else {
+        showNotification(`Error al conectar con el servidor: ${error.message}`, "error")
+      }
     } finally {
       setLoading(false)
     }
@@ -127,8 +198,8 @@ export default function Auth() {
                   className="input"
                   type="email"
                   placeholder="tu@email.com"
-                  value={loginData.email}
-                  onChange={(e) => setLoginData({ ...loginData, email: e.target.value })}
+                  value={loginData.Email}
+                  onChange={(e) => setLoginData({ ...loginData, Email: e.target.value })}
                   required
                 />
               </div>
@@ -139,8 +210,8 @@ export default function Auth() {
                   className="input"
                   type="password"
                   placeholder="••••••••"
-                  value={loginData.password}
-                  onChange={(e) => setLoginData({ ...loginData, password: e.target.value })}
+                  value={loginData.Password}
+                  onChange={(e) => setLoginData({ ...loginData, Password: e.target.value })}
                   required
                 />
               </div>
@@ -179,27 +250,26 @@ export default function Auth() {
             </div>
 
             <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="label">Nombre</label>
-                  <input
-                    className="input"
-                    placeholder="Juan"
-                    value={registerData.nombre}
-                    onChange={(e) => setRegisterData({ ...registerData, nombre: e.target.value })}
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="label">Apellido</label>
-                  <input
-                    className="input"
-                    placeholder="Pérez"
-                    value={registerData.apellido}
-                    onChange={(e) => setRegisterData({ ...registerData, apellido: e.target.value })}
-                    required
-                  />
-                </div>
+              <div>
+                <label className="label">Nombre</label>
+                <input
+                  className="input"
+                  placeholder="Juan"
+                  value={registerData.Nombre}
+                  onChange={(e) => setRegisterData({ ...registerData, Nombre: e.target.value })}
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="label">Apellido</label>
+                <input
+                  className="input"
+                  placeholder="Pérez"
+                  value={registerData.Apellido}
+                  onChange={(e) => setRegisterData({ ...registerData, Apellido: e.target.value })}
+                  required
+                />
               </div>
 
               <div>
@@ -208,8 +278,8 @@ export default function Auth() {
                   className="input"
                   type="email"
                   placeholder="tu@email.com"
-                  value={registerData.email}
-                  onChange={(e) => setRegisterData({ ...registerData, email: e.target.value })}
+                  value={registerData.Email}
+                  onChange={(e) => setRegisterData({ ...registerData, Email: e.target.value })}
                   required
                 />
               </div>
@@ -220,8 +290,8 @@ export default function Auth() {
                   className="input"
                   type="password"
                   placeholder="Mínimo 8 caracteres"
-                  value={registerData.password}
-                  onChange={(e) => setRegisterData({ ...registerData, password: e.target.value })}
+                  value={registerData.Password}
+                  onChange={(e) => setRegisterData({ ...registerData, Password: e.target.value })}
                   required
                   minLength={8}
                 />

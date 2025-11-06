@@ -1,111 +1,42 @@
 "use client"
 
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
-import { AuthProvider, useAuth } from "./context/AuthContext"
+import { Routes, Route, Navigate, useNavigate, useLocation } from "react-router-dom"
+import { useEffect } from "react"
 import Topbar from "./components/Topbar"
+import Landing from "./pages/Landing"
 import Auth from "./pages/Auth"
-import Dashboard from "./pages/Dashboard"
 import Profile from "./pages/Profile"
+import Dashboard from "./pages/Dashboard"
 import Bills from "./pages/Bills"
 import Report from "./pages/Report"
-import Landing from "./pages/Landing"
 
-function ProtectedRoute({ children }) {
-  const { usuario } = useAuth()
+export default function App() {
+  const navigate = useNavigate()
+  const location = useLocation()
 
-  if (!usuario) {
-    return <Navigate to="/auth" replace />
-  }
+  useEffect(() => {
+    const usuario = localStorage.getItem("usuario")
 
-  return children
-}
-
-function AuthRoute({ children }) {
-  const { usuario } = useAuth()
-
-  if (usuario) {
-    return <Navigate to="/dashboard" replace />
-  }
-
-  return children
-}
-
-function AppContent() {
-  const { usuario } = useAuth()
+    // Si hay usuario logueado y está en la landing page, redirigir al dashboard
+    if (usuario && location.pathname === "/") {
+      navigate("/dashboard")
+    }
+  }, [location.pathname, navigate])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      {usuario && <Topbar />}
-
-      <main className="max-w-7xl mx-auto px-6 py-8">
+    <div className="min-h-screen">
+      <Topbar />
+      <main className="max-w-7xl mx-auto px-6 pt-8 pb-20">
         <Routes>
-          <Route path="/" element={usuario ? <Navigate to="/dashboard" replace /> : <Navigate to="/auth" replace />} />
-
-          <Route
-            path="/auth"
-            element={
-              <AuthRoute>
-                <Auth />
-              </AuthRoute>
-            }
-          />
-
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/profile"
-            element={
-              <ProtectedRoute>
-                <Profile />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/bills"
-            element={
-              <ProtectedRoute>
-                <Bills />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/report"
-            element={
-              <ProtectedRoute>
-                <Report />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/landing"
-            element={
-              <ProtectedRoute>
-                <Landing />
-              </ProtectedRoute>
-            }
-          />
-
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="/" element={<Landing />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/bills" element={<Bills />} />
+          <Route path="/report" element={<Report />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </main>
     </div>
   )
 }
-
-function App() {
-  return (
-    <BrowserRouter>
-      <AuthProvider>
-        <AppContent />
-      </AuthProvider>
-    </BrowserRouter>
-  )
-}
-
-export default App

@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useAuth } from "../context/AuthContext"
 
 export default function Report() {
   const [periodType, setPeriodType] = useState("mes")
@@ -13,26 +14,34 @@ export default function Report() {
     balance: 0,
   })
 
+  const { usuario } = useAuth()
+
   useEffect(() => {
     const fetchGastos = async () => {
       try {
-        const usuario = JSON.parse(localStorage.getItem("usuario"))
-        if (!usuario) return
+        if (!usuario) {
+          console.log("[v0] No hay usuario logueado")
+          setLoading(false)
+          return
+        }
 
+        console.log("[v0] Usuario actual:", usuario)
         const response = await fetch(`${import.meta.env.VITE_API_URI}/Gasto`)
         const data = await response.json()
+        console.log("[v0] Gastos recibidos de la API:", data)
 
-        const gastosUsuario = data.filter((g) => g.idUsuario === usuario.idPersona || g.idUsuario === "U001")
+        const gastosUsuario = data.filter((g) => g.idPersona === usuario.id)
+        console.log("[v0] Gastos filtrados del usuario:", gastosUsuario)
         setGastos(gastosUsuario)
       } catch (error) {
-        console.error("Error al cargar gastos:", error)
+        console.error("[v0] Error al cargar gastos:", error)
       } finally {
         setLoading(false)
       }
     }
 
     fetchGastos()
-  }, [])
+  }, [usuario])
 
   useEffect(() => {
     if (gastos.length === 0) return
@@ -41,26 +50,79 @@ export default function Report() {
     const filteredData = []
     let totalGastos = 0
 
+    console.log("[v0] ===== INICIO DE FILTRADO =====")
+    console.log("[v0] Período:", periodType)
+    console.log("[v0] Fecha actual:", now.toISOString())
+    console.log("[v0] Total de gastos del usuario:", gastos.length)
+
+    const parseFecha = (fechaString) => {
+      // Si la fecha no tiene 'Z' al final, agregarla para que se interprete como UTC
+      // y luego convertir a hora local
+      let fechaParseada
+      if (fechaString.endsWith("Z")) {
+        fechaParseada = new Date(fechaString)
+      } else {
+        // Si no tiene Z, asumimos que es hora local del servidor
+        fechaParseada = new Date(fechaString + "Z")
+      }
+
+      console.log(
+        "[v0] Parseando fecha:",
+        fechaString,
+        "→",
+        fechaParseada.toISOString(),
+        "→ Local:",
+        fechaParseada.toLocaleString(),
+      )
+      return fechaParseada
+    }
+
     if (periodType === "dia") {
-      for (let i = 23; i >= 0; i--) {
-        const horaActual = now.getHours()
-        const horaObjetivo = (horaActual - i + 24) % 24
+      for (let i = 6; i >= 0; i--) {
+        const diaObjetivo = new Date(now)
+        diaObjetivo.setDate(now.getDate() - i)
+        diaObjetivo.setHours(0, 0, 0, 0)
 
-        const gastosHora = gastos.filter((g) => {
-          const fechaGasto = new Date(g.fecha)
-          const esHoy =
-            fechaGasto.getDate() === now.getDate() &&
-            fechaGasto.getMonth() === now.getMonth() &&
-            fechaGasto.getFullYear() === now.getFullYear()
+        const diaFin = new Date(diaObjetivo)
+        diaFin.setHours(23, 59, 59, 999)
 
-          return esHoy && fechaGasto.getHours() === horaObjetivo
+        console.log(`[v0] Buscando gastos para día ${i}:`, {
+          inicio: diaObjetivo.toISOString(),
+          fin: diaFin.toISOString(),
+          inicioLocal: diaObjetivo.toLocaleString(),
+          finLocal: diaFin.toLocaleString(),
         })
 
-        const total = gastosHora.reduce((sum, g) => sum + g.monto, 0)
+        const gastosDia = gastos.filter((g) => {
+          const fechaGasto = parseFecha(g.fecha)
+          const enRango = fechaGasto >= diaObjetivo && fechaGasto <= diaFin
+
+          if (enRango) {
+            console.log("[v0] ✓ Gasto encontrado:", {
+              descripcion: g.descripcion,
+              fecha: g.fecha,
+              fechaLocal: fechaGasto.toLocaleString(),
+              monto: g.monto,
+            })
+          }
+
+          return enRango
+        })
+
+        const total = gastosDia.reduce((sum, g) => sum + g.monto, 0)
         totalGastos += total
 
+        const nombreDia =
+          i === 0 ? "Hoy" : i === 1 ? "Ayer" : diaObjetivo.toLocaleDateString("es-ES", { weekday: "short" })
+
+        console.log(`[v0] Resultado día ${nombreDia}:`, {
+          fecha: diaObjetivo.toLocaleDateString(),
+          gastosEncontrados: gastosDia.length,
+          total: total,
+        })
+
         filteredData.push({
-          name: `${horaObjetivo.toString().padStart(2, "0")}:00`,
+          name: nombreDia,
           gastos: total,
         })
       }
@@ -74,13 +136,38 @@ export default function Report() {
         semanaInicio.setDate(semanaFin.getDate() - 6)
         semanaInicio.setHours(0, 0, 0, 0)
 
+        console.log(`[v0] Buscando gastos para semana ${4 - i}:`, {
+          inicio: semanaInicio.toISOString(),
+          fin: semanaFin.toISOString(),
+          inicioLocal: semanaInicio.toLocaleString(),
+          finLocal: semanaFin.toLocaleString(),
+        })
+
         const gastosSemana = gastos.filter((g) => {
-          const fechaGasto = new Date(g.fecha)
-          return fechaGasto >= semanaInicio && fechaGasto <= semanaFin
+          const fechaGasto = parseFecha(g.fecha)
+          const enRango = fechaGasto >= semanaInicio && fechaGasto <= semanaFin
+
+          if (enRango) {
+            console.log("[v0] ✓ Gasto encontrado:", {
+              descripcion: g.descripcion,
+              fecha: g.fecha,
+              fechaLocal: fechaGasto.toLocaleString(),
+              monto: g.monto,
+            })
+          }
+
+          return enRango
         })
 
         const total = gastosSemana.reduce((sum, g) => sum + g.monto, 0)
         totalGastos += total
+
+        console.log(`[v0] Resultado semana ${4 - i}:`, {
+          inicio: semanaInicio.toLocaleDateString(),
+          fin: semanaFin.toLocaleDateString(),
+          gastosEncontrados: gastosSemana.length,
+          total: total,
+        })
 
         filteredData.push({
           name: `Sem ${4 - i}`,
@@ -96,7 +183,7 @@ export default function Report() {
         const mesFin = new Date(mesObjetivo.getFullYear(), mesObjetivo.getMonth() + 1, 0, 23, 59, 59, 999)
 
         const gastosMes = gastos.filter((g) => {
-          const fechaGasto = new Date(g.fecha)
+          const fechaGasto = parseFecha(g.fecha)
           return fechaGasto >= mesInicio && fechaGasto <= mesFin
         })
 
@@ -110,6 +197,10 @@ export default function Report() {
       }
     }
 
+    console.log("[v0] ===== RESULTADO FINAL =====")
+    console.log("[v0] Datos del gráfico:", filteredData)
+    console.log("[v0] Total de gastos:", totalGastos)
+
     setChartData(filteredData)
     setStats({
       totalGastos: totalGastos,
@@ -117,6 +208,16 @@ export default function Report() {
       balance: -totalGastos,
     })
   }, [gastos, periodType])
+
+  if (!usuario) {
+    return (
+      <div className="max-w-3xl mx-auto">
+        <div className="card">
+          <p className="text-center text-slate-600">Debes iniciar sesión para ver tus reportes</p>
+        </div>
+      </div>
+    )
+  }
 
   if (loading) {
     return (
@@ -201,7 +302,7 @@ export default function Report() {
       <div className="card">
         <h3 className="text-xl font-bold text-slate-900 mb-6">
           Tendencia de Gastos -{" "}
-          {periodType === "dia" ? "Últimas 24 horas" : periodType === "mes" ? "Último mes" : "Último año"}
+          {periodType === "dia" ? "Últimos 7 días" : periodType === "mes" ? "Últimas 4 semanas" : "Últimos 12 meses"}
         </h3>
 
         {chartData.length > 0 ? (
