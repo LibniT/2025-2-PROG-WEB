@@ -47,7 +47,7 @@ namespace Web_Api_Prueba.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutPersona(int id, Persona persona)
         {
-            if (id != persona.IdPersona)
+            if (id != persona.Id)
             {
                 return BadRequest();
             }
@@ -81,7 +81,7 @@ namespace Web_Api_Prueba.Controllers
             _context.Personas.Add(persona);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetPersona", new { id = persona.IdPersona }, persona);
+            return CreatedAtAction("GetPersona", new { id = persona.Id }, persona);
         }
 
         // DELETE: api/Personas/5
@@ -102,7 +102,7 @@ namespace Web_Api_Prueba.Controllers
 
         private bool PersonaExists(int id)
         {
-            return _context.Personas.Any(personas => personas.IdPersona == id);
+            return _context.Personas.Any(e => e.Id == id);
         }
     }
 }

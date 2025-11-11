@@ -1,8 +1,8 @@
 [
   {
-    "ContainingType": "Web_Api_Prueba.Controllers.CategoriaGastoesController",
+    "ContainingType": "Web_Api_Prueba.Controllers.CategoriaGastoController",
     "Method": "GetCategoriaGastos",
-    "RelativePath": "api/CategoriaGastoes",
+    "RelativePath": "api/CategoriaGasto",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -20,9 +20,9 @@
     ]
   },
   {
-    "ContainingType": "Web_Api_Prueba.Controllers.CategoriaGastoesController",
+    "ContainingType": "Web_Api_Prueba.Controllers.CategoriaGastoController",
     "Method": "PostCategoriaGasto",
-    "RelativePath": "api/CategoriaGastoes",
+    "RelativePath": "api/CategoriaGasto",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -46,9 +46,9 @@
     ]
   },
   {
-    "ContainingType": "Web_Api_Prueba.Controllers.CategoriaGastoesController",
+    "ContainingType": "Web_Api_Prueba.Controllers.CategoriaGastoController",
     "Method": "GetCategoriaGasto",
-    "RelativePath": "api/CategoriaGastoes/{id}",
+    "RelativePath": "api/CategoriaGasto/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -72,9 +72,9 @@
     ]
   },
   {
-    "ContainingType": "Web_Api_Prueba.Controllers.CategoriaGastoesController",
+    "ContainingType": "Web_Api_Prueba.Controllers.CategoriaGastoController",
     "Method": "PutCategoriaGasto",
-    "RelativePath": "api/CategoriaGastoes/{id}",
+    "RelativePath": "api/CategoriaGasto/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -93,9 +93,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Web_Api_Prueba.Controllers.CategoriaGastoesController",
+    "ContainingType": "Web_Api_Prueba.Controllers.CategoriaGastoController",
     "Method": "DeleteCategoriaGasto",
-    "RelativePath": "api/CategoriaGastoes/{id}",
+    "RelativePath": "api/CategoriaGasto/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -109,9 +109,144 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Web_Api_Prueba.Controllers.GastoesController",
+    "ContainingType": "Web_Api_Prueba.Controllers.CategoriaGastoController",
+    "Method": "GetCategoriaByUser",
+    "RelativePath": "api/CategoriaGasto/User/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Web_Api_Prueba.Models.CategoriaGasto, Web_Api_Prueba, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Web_Api_Prueba.Controllers.CategoriaPresupuestoController",
+    "Method": "GetCategoriaPresupuestos",
+    "RelativePath": "api/CategoriaPresupuesto",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Web_Api_Prueba.Models.CategoriaPresupuesto, Web_Api_Prueba, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Web_Api_Prueba.Controllers.CategoriaPresupuestoController",
+    "Method": "PostCategoriaPresupuesto",
+    "RelativePath": "api/CategoriaPresupuesto",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "categoriaPresupuesto",
+        "Type": "Web_Api_Prueba.Models.CategoriaPresupuesto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Web_Api_Prueba.Models.CategoriaPresupuesto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Web_Api_Prueba.Controllers.CategoriaPresupuestoController",
+    "Method": "GetCategoriaPresupuesto",
+    "RelativePath": "api/CategoriaPresupuesto/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Web_Api_Prueba.Models.CategoriaPresupuesto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Web_Api_Prueba.Controllers.CategoriaPresupuestoController",
+    "Method": "PutCategoriaPresupuesto",
+    "RelativePath": "api/CategoriaPresupuesto/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "categoriaPresupuesto",
+        "Type": "Web_Api_Prueba.Models.CategoriaPresupuesto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Web_Api_Prueba.Controllers.CategoriaPresupuestoController",
+    "Method": "DeleteCategoriaPresupuesto",
+    "RelativePath": "api/CategoriaPresupuesto/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Web_Api_Prueba.Controllers.GastoController",
     "Method": "GetGastos",
-    "RelativePath": "api/Gastoes",
+    "RelativePath": "api/Gasto",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -129,9 +264,9 @@
     ]
   },
   {
-    "ContainingType": "Web_Api_Prueba.Controllers.GastoesController",
+    "ContainingType": "Web_Api_Prueba.Controllers.GastoController",
     "Method": "PostGasto",
-    "RelativePath": "api/Gastoes",
+    "RelativePath": "api/Gasto",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -155,9 +290,9 @@
     ]
   },
   {
-    "ContainingType": "Web_Api_Prueba.Controllers.GastoesController",
+    "ContainingType": "Web_Api_Prueba.Controllers.GastoController",
     "Method": "GetGasto",
-    "RelativePath": "api/Gastoes/{id}",
+    "RelativePath": "api/Gasto/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -181,9 +316,9 @@
     ]
   },
   {
-    "ContainingType": "Web_Api_Prueba.Controllers.GastoesController",
+    "ContainingType": "Web_Api_Prueba.Controllers.GastoController",
     "Method": "PutGasto",
-    "RelativePath": "api/Gastoes/{id}",
+    "RelativePath": "api/Gasto/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -202,9 +337,144 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Web_Api_Prueba.Controllers.GastoesController",
+    "ContainingType": "Web_Api_Prueba.Controllers.GastoController",
     "Method": "DeleteGasto",
-    "RelativePath": "api/Gastoes/{id}",
+    "RelativePath": "api/Gasto/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Web_Api_Prueba.Controllers.GastoController",
+    "Method": "GetGastosByUser",
+    "RelativePath": "api/Gasto/User/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Web_Api_Prueba.Models.Gasto, Web_Api_Prueba, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Web_Api_Prueba.Controllers.MetasController",
+    "Method": "GetMetas",
+    "RelativePath": "api/Metas",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Web_Api_Prueba.Models.Meta, Web_Api_Prueba, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Web_Api_Prueba.Controllers.MetasController",
+    "Method": "PostMeta",
+    "RelativePath": "api/Metas",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "meta",
+        "Type": "Web_Api_Prueba.Models.Meta",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Web_Api_Prueba.Models.Meta",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Web_Api_Prueba.Controllers.MetasController",
+    "Method": "GetMeta",
+    "RelativePath": "api/Metas/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Web_Api_Prueba.Models.Meta",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Web_Api_Prueba.Controllers.MetasController",
+    "Method": "PutMeta",
+    "RelativePath": "api/Metas/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "meta",
+        "Type": "Web_Api_Prueba.Models.Meta",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Web_Api_Prueba.Controllers.MetasController",
+    "Method": "DeleteMeta",
+    "RelativePath": "api/Metas/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,

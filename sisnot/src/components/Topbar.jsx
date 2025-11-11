@@ -3,6 +3,12 @@ import { NavLink, Link, useLocation } from "react-router-dom"
 const tabs = [
   { to: "/auth", label: "Registro", icon: "👤" },
   { to: "/dashboard", label: "Dashboard", icon: "📊" },
+<<<<<<< Updated upstream
+=======
+  { to: "/bills", label: "Gastos", icon: "💰" },
+  { to: "/report", label: "Reportes", icon: "📈" },
+  {to: "/IA", label:"Bot", icon:"🤖"},
+>>>>>>> Stashed changes
   { to: "/profile", label: "Perfil", icon: "⚙️" },
   {to: "/Bills", label: "Gastos", icon: "💰"}
 ]

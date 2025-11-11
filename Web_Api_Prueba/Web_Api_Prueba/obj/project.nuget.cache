@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SZQpqZN9ZxE=",
+  "dgSpecHash": "n2Wd6Dw5/Q8=",
   "success": true,
-  "projectFilePath": "C:\\PROYECTO-WEB\\commit2libni\\2025-2-PROG-WEB\\Web_Api_Prueba\\Web_Api_Prueba\\Web_Api_Prueba.csproj",
+  "projectFilePath": "C:\\PROYECTO-WEB\\modificacionProyectoPresentado2\\2025-2-PROG-WEB\\Web_Api_Prueba\\Web_Api_Prueba\\Web_Api_Prueba.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\famil\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\famil\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

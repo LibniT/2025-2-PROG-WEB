@@ -1,23 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
+using System.ComponentModel.DataAnnotations;
 
 namespace Web_Api_Prueba.Models
 {
     public class Gasto
     {
         [Key]
-        public int IdGasto { get; set; }
-        public float Monto { get; set; }
+        public int Id { get; set; }
+        public decimal Monto { get; set; }
         public DateTime Fecha { get; set; }
         public string Descripcion { get; set; }
+        public int IdPersona { get; set; }
+        public int IdCategoriaGasto { get; set; }
 
-        // Clave foránea (agregación, no composición)
-        public string? IdUsuario { get; set; }
-       
-        public Persona? Usuario { get; set; }
-
-        // Relación con categoría
-        public int? IdCategoriaGasto { get; set; }
-        public CategoriaGasto? Categoria { get; set; }
     }
 }

@@ -4,11 +4,21 @@
 import { useEffect, useState, useRef } from "react"
 import { useAuth } from "../context/AuthContext"
 import { GoogleGenerativeAI } from "@google/generative-ai"
+<<<<<<< HEAD
 import { ESTIMACION_GASTOS, CONSEJO_FINANCIERO } from "./contexAI"
 
 export default function IAAsistente() {
   // lee la API key desde variables de entorno Vite
   const API_KEY = "";//Debes añadir la clave API KEY GEMINI
+=======
+import { ESTIMACION_GASTOS, CONSEJO_FINANCIERO } from "./contextAI"
+
+export default function IAAsistente() {
+  // lee la API key desde variables de entorno Vite
+  
+  const API_KEY = "AIzaSyAkzI9WPibItAW5cpT5fFbc7oeIwCAhCWc";//Debes añadir la clave API KEY GEMINI
+
+>>>>>>> 2b1ac24 (Dios los bendiga. Aplicacion con AI y filtrado por usuario)
   // NOTA: por seguridad lo ideal es no exponer la API KEY en el cliente.
   // Si no quieres exponerla, crea un endpoint en tu backend que haga la llamada a Gemini.
 

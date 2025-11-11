@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Web_Api_Prueba.Data;
 
@@ -11,9 +12,11 @@ using Web_Api_Prueba.Data;
 namespace Web_Api_Prueba.Migrations
 {
     [DbContext(typeof(ConexionContext))]
-    partial class ConexionContextModelSnapshot : ModelSnapshot
+    [Migration("20251028024055_Nuevas_Tablas")]
+    partial class Nuevas_Tablas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,9 +36,6 @@ namespace Web_Api_Prueba.Migrations
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("idPersona")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

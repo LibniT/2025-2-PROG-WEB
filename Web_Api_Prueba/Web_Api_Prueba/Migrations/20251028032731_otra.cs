@@ -5,7 +5,7 @@
 namespace Web_Api_Prueba.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class otra : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

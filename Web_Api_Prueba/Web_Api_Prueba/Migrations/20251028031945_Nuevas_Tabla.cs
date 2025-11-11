@@ -5,7 +5,7 @@
 namespace Web_Api_Prueba.Migrations
 {
     /// <inheritdoc />
-    public partial class commitListo : Migration
+    public partial class Nuevas_Tabla : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

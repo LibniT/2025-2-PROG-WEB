@@ -5,10 +5,10 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/CategoriaGastoes": {
+    "/api/CategoriaGasto": {
       "get": {
         "tags": [
-          "CategoriaGastoes"
+          "CategoriaGasto"
         ],
         "responses": {
           "200": {
@@ -44,7 +44,7 @@
       },
       "post": {
         "tags": [
-          "CategoriaGastoes"
+          "CategoriaGasto"
         ],
         "requestBody": {
           "content": {
@@ -89,10 +89,10 @@
         }
       }
     },
-    "/api/CategoriaGastoes/{id}": {
+    "/api/CategoriaGasto/{id}": {
       "get": {
         "tags": [
-          "CategoriaGastoes"
+          "CategoriaGasto"
         ],
         "parameters": [
           {
@@ -130,7 +130,7 @@
       },
       "put": {
         "tags": [
-          "CategoriaGastoes"
+          "CategoriaGasto"
         ],
         "parameters": [
           {
@@ -170,7 +170,7 @@
       },
       "delete": {
         "tags": [
-          "CategoriaGastoes"
+          "CategoriaGasto"
         ],
         "parameters": [
           {
@@ -190,10 +190,244 @@
         }
       }
     },
-    "/api/Gastoes": {
+    "/api/CategoriaGasto/User/{userId}": {
       "get": {
         "tags": [
-          "Gastoes"
+          "CategoriaGasto"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CategoriaGasto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CategoriaGasto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CategoriaGasto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/CategoriaPresupuesto": {
+      "get": {
+        "tags": [
+          "CategoriaPresupuesto"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CategoriaPresupuesto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CategoriaPresupuesto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CategoriaPresupuesto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "CategoriaPresupuesto"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoriaPresupuesto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoriaPresupuesto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoriaPresupuesto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoriaPresupuesto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoriaPresupuesto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoriaPresupuesto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/CategoriaPresupuesto/{id}": {
+      "get": {
+        "tags": [
+          "CategoriaPresupuesto"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoriaPresupuesto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoriaPresupuesto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoriaPresupuesto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "CategoriaPresupuesto"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoriaPresupuesto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoriaPresupuesto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoriaPresupuesto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "CategoriaPresupuesto"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Gasto": {
+      "get": {
+        "tags": [
+          "Gasto"
         ],
         "responses": {
           "200": {
@@ -229,7 +463,7 @@
       },
       "post": {
         "tags": [
-          "Gastoes"
+          "Gasto"
         ],
         "requestBody": {
           "content": {
@@ -274,10 +508,10 @@
         }
       }
     },
-    "/api/Gastoes/{id}": {
+    "/api/Gasto/{id}": {
       "get": {
         "tags": [
-          "Gastoes"
+          "Gasto"
         ],
         "parameters": [
           {
@@ -315,7 +549,7 @@
       },
       "put": {
         "tags": [
-          "Gastoes"
+          "Gasto"
         ],
         "parameters": [
           {
@@ -355,7 +589,241 @@
       },
       "delete": {
         "tags": [
-          "Gastoes"
+          "Gasto"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Gasto/User/{userId}": {
+      "get": {
+        "tags": [
+          "Gasto"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Gasto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Gasto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Gasto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Metas": {
+      "get": {
+        "tags": [
+          "Metas"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Meta"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Meta"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Meta"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Metas"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Meta"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Meta"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Meta"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Meta"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Meta"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Meta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Metas/{id}": {
+      "get": {
+        "tags": [
+          "Metas"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Meta"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Meta"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Meta"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Metas"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Meta"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Meta"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Meta"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Metas"
         ],
         "parameters": [
           {
@@ -603,30 +1071,41 @@
   "components": {
     "schemas": {
       "CategoriaGasto": {
-        "required": [
-          "nombre"
-        ],
         "type": "object",
         "properties": {
-          "idCategoriaGasto": {
+          "id": {
             "type": "integer",
             "format": "int32"
           },
           "nombre": {
-            "maxLength": 100,
-            "minLength": 1,
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
-          "contadorGastos": {
+          "idPersona": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CategoriaPresupuesto": {
+        "type": "object",
+        "properties": {
+          "id": {
             "type": "integer",
             "format": "int32"
           },
-          "gastos": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Gasto"
-            },
-            "nullable": true
+          "montoAsignado": {
+            "type": "number",
+            "format": "double"
+          },
+          "idPresupuesto": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idCategoriaGasto": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -634,13 +1113,13 @@
       "Gasto": {
         "type": "object",
         "properties": {
-          "idGasto": {
+          "id": {
             "type": "integer",
             "format": "int32"
           },
           "monto": {
             "type": "number",
-            "format": "float"
+            "format": "double"
           },
           "fecha": {
             "type": "string",
@@ -650,28 +1129,21 @@
             "type": "string",
             "nullable": true
           },
-          "idUsuario": {
-            "type": "string",
-            "nullable": true
-          },
-          "usuario": {
-            "$ref": "#/components/schemas/Persona"
+          "idPersona": {
+            "type": "integer",
+            "format": "int32"
           },
           "idCategoriaGasto": {
             "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "categoria": {
-            "$ref": "#/components/schemas/CategoriaGasto"
+            "format": "int32"
           }
         },
         "additionalProperties": false
       },
-      "Persona": {
+      "Meta": {
         "type": "object",
         "properties": {
-          "idPersona": {
+          "id": {
             "type": "integer",
             "format": "int32"
           },
@@ -679,31 +1151,63 @@
             "type": "string",
             "nullable": true
           },
-          "correo": {
+          "descripcion": {
             "type": "string",
             "nullable": true
           },
-          "contrasena": {
+          "montoActual": {
+            "type": "number",
+            "format": "double"
+          },
+          "montoObjetivo": {
+            "type": "number",
+            "format": "double"
+          },
+          "fechaCreacion": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fechaLimite": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "estado": {
+            "type": "string",
+            "nullable": true
+          },
+          "idPersona": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Persona": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "apellido": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
             "type": "string",
             "nullable": true
           },
           "fechaRegistro": {
             "type": "string",
             "format": "date-time"
-          },
-          "tipoUsuario": {
-            "type": "string",
-            "nullable": true
-          },
-          "autenticado": {
-            "type": "boolean"
-          },
-          "gastos": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Gasto"
-            },
-            "nullable": true
           }
         },
         "additionalProperties": false
